@@ -10,7 +10,6 @@ function Activity(props) {
               type="checkbox"
               value="swimming"
               onChange={props.handleActivityCheckbox}
-              checked={props.activity}
             />
             Swimming
           </label>
@@ -22,7 +21,6 @@ function Activity(props) {
               type="checkbox"
               value="bathing"
               onChange={props.handleActivityCheckbox}
-              checked={props.activity}
             />
             Bathing
           </label>
@@ -34,7 +32,6 @@ function Activity(props) {
               type="checkbox"
               value="chatting"
               onChange={props.handleActivityCheckbox}
-              checked={props.activity}
             />
             Chatting
           </label>
@@ -46,7 +43,6 @@ function Activity(props) {
               type="checkbox"
               value="noTime"
               onChange={props.handleActivityCheckbox}
-              checked={props.activity}
             />
             NoActivity
           </label>

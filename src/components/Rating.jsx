@@ -11,7 +11,7 @@ function Rating(props) {
             value="1"
             onChange={props.handleRatingCheckbox}
           />
-          <label for="color-one">1</label>
+          <label htmlFor="color-one">1</label>
         </li>
         <li>
           <input
@@ -21,7 +21,7 @@ function Rating(props) {
             value="2"
             onChange={props.handleRatingCheckbox}
           />
-          <label for="color-two">2</label>
+          <label htmlFor="color-two">2</label>
         </li>
         <li>
           <input
@@ -31,7 +31,7 @@ function Rating(props) {
             value="3"
             onChange={props.handleRatingCheckbox}
           />
-          <label for="color-three">3</label>
+          <label htmlFor="color-three">3</label>
         </li>
         <li>
           <input
@@ -41,7 +41,7 @@ function Rating(props) {
             value="4"
             onChange={props.handleRatingCheckbox}
           />
-          <label for="color-four">4</label>
+          <label htmlFor="color-four">4</label>
         </li>
       </ul>
     </div>

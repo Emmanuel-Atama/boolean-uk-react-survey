@@ -10,25 +10,45 @@ function Main() {
   const [open, setOpen] = useState(false); //Ignore this state
   const [rating, setRating] = useState(false);
   const [activity, setActivity] = useState({
-    Swimming: false,
-    Bathing: false,
-    Chatting: false,
-    NoActivity: false
+    swimming: false,
+    bathing: false,
+    chatting: false,
+    noTime: false
   });
   const [textInput, setTextInput] = useState(null);
   const [nameInput, setNameInput] = useState(null);
   const [email, setEmail] = useState(null);
   const [submit, setSubmit] = useState(null);
 
-  const handleActivityCheckbox = (event) => {
-    console.log("Inside handleActivityCheckbox: ", event.target.checked);
-    setActivity(event.target.checked);
-  };
+  console.log("Inside State: ", {
+    rating,
+    activity,
+    textInput,
+    nameInput,
+    email,
+    submit
+  });
 
   const handleRatingCheckbox = (event) => {
     console.log("Inside handleRatingCheckbox: ", event.target.value);
+    const value = parseInt(event.target.value, 10);
+    setRating(value);
+  };
 
-    setRating(event.target.value);
+  const handleActivityCheckbox = (event) => {
+    console.log(
+      "Inside handleActivityCheckbox: ",
+      event.target.checked,
+      event.target.value
+    );
+    const targetValue = event.target.value;
+    const isChecked = event.target.checked;
+
+    const updatedActivity = {
+      ...activity,
+      [targetValue]: isChecked
+    };
+    setActivity(updatedActivity);
   };
 
   const handleTextInput = (event) => {
@@ -51,20 +71,21 @@ function Main() {
 
   const handleSubmit = (event) => {
     console.log("Inside Submit: ");
+    event.preventDefault();
     setSubmit();
   };
 
-  const dataInputed = {
-    rating: rating,
-    activity: activity,
-    textInput: textInput,
-    nameInput: nameInput,
-    email: email,
-    submit: submit
-  };
-  if (rating || activity || textInput || nameInput || email || submit) {
-    console.log("Send to Server: ", dataInputed);
-  }
+  // const dataInputed = {
+  //   rating: rating,
+  //   activity: activity,
+  //   textInput: textInput,
+  //   nameInput: nameInput,
+  //   email: email,
+  //   submit: submit
+  // };
+  // if (rating || activity || textInput || nameInput || email || submit) {
+  //   console.log("Send to Server: ", dataInputed);
+  // }
   return (
     <main className="main">
       <section className={`main__list ${open ? "open" : ""}`}>
@@ -80,9 +101,12 @@ function Main() {
             handleActivityCheckbox={handleActivityCheckbox}
             activity={activity}
           />
-          <TextAreaInput handleTextInput={handleTextInput} />
-          <NameInput handleNameInput={handleNameInput} />
-          <EmailInput handleEmail={handleEmail} />
+          <TextAreaInput
+            handleTextInput={handleTextInput}
+            textInput={textInput}
+          />
+          <NameInput handleNameInput={handleNameInput} nameInput={nameInput} />
+          <EmailInput handleEmail={handleEmail} email={email} />
           <Submit handleSubmit={handleSubmit} />
         </form>
       </section>

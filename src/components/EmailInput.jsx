@@ -5,7 +5,7 @@ function EmailInput(props) {
       <input
         type="email"
         name="email"
-        value={EmailInput}
+        value={props.email}
         onChange={props.handleEmail}
       />
     </label>
