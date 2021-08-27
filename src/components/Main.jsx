@@ -53,6 +53,18 @@ function Main() {
     console.log("Inside Submit: ");
     setSubmit();
   };
+
+  const dataInputed = {
+    rating: rating,
+    activity: activity,
+    textInput: textInput,
+    nameInput: nameInput,
+    email: email,
+    submit: submit
+  };
+  if (rating || activity || textInput || nameInput || email || submit) {
+    console.log("Send to Server: ", dataInputed);
+  }
   return (
     <main className="main">
       <section className={`main__list ${open ? "open" : ""}`}>

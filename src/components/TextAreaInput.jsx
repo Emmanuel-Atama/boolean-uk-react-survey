@@ -6,6 +6,7 @@ function TextAreaInput(props) {
         name="review"
         cols="30"
         rows="10"
+        value={TextAreaInput}
         onChange={props.handleTextInput}
       ></textarea>
     </label>

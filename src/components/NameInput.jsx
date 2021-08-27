@@ -5,7 +5,7 @@ function NameInput(props) {
       <input
         type="text"
         name="username"
-        value=""
+        value={NameInput}
         onChange={props.handleNameInput}
       />
     </label>
