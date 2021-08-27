@@ -1,5 +1,7 @@
 import { useState } from "react";
 import Activity from "./Activity";
+import AnswersList from "./AnswersList";
+// import AnswersItem from "./AnswersItem";
 import EmailInput from "./EmailInput";
 import NameInput from "./NameInput";
 import Rating from "./Rating";
@@ -7,6 +9,7 @@ import Submit from "./Submit";
 import TextAreaInput from "./TextAreaInput";
 
 function Main() {
+  const [answers, setAnswers] = useState([]);
   const [open, setOpen] = useState(false); //Ignore this state
   const [rating, setRating] = useState(false);
   const [activity, setActivity] = useState({
@@ -21,6 +24,7 @@ function Main() {
   const [submit, setSubmit] = useState(null);
 
   console.log("Inside State: ", {
+    answers,
     rating,
     activity,
     textInput,
@@ -28,6 +32,9 @@ function Main() {
     email,
     submit
   });
+  // const handleAnswer = (event) => {
+  //   console.log("Inside handleAnswer: ");
+  // };
 
   const handleRatingCheckbox = (event) => {
     console.log("Inside handleRatingCheckbox: ", event.target.value);
@@ -80,18 +87,20 @@ function Main() {
       email: email
     };
     if (dataInputed) {
-      console.log("Send To Server: ", dataInputed);
+      return console.log("Send To Server: ", dataInputed);
     }
+    setSubmit(dataInputed);
   };
 
   return (
     <main className="main">
       <section className={`main__list ${open ? "open" : ""}`}>
         <h2>Answers list</h2>
-        {/* answers should go here */}
+        {/* <AnswersItem answersList={answers} onSubmit={handleSubmit} /> */}
+        <AnswersList answersList={answers} />
       </section>
       <section className="main__form">
-        <form className="form">
+        <form className="form" onSubmit={handleSubmit}>
           <h2>Tell us what you think about your rubber duck!</h2>
           <Rating handleRatingCheckbox={handleRatingCheckbox} />
 
@@ -105,7 +114,7 @@ function Main() {
           />
           <NameInput handleNameInput={handleNameInput} nameInput={nameInput} />
           <EmailInput handleEmail={handleEmail} email={email} />
-          <Submit handleSubmit={handleSubmit} />
+          <Submit />
         </form>
       </section>
     </main>
