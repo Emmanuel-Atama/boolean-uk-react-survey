@@ -64,7 +64,7 @@ function Main() {
   };
 
   const handleEmail = (event) => {
-    console.log("Inside handleNameInput: ", event.target.value);
+    console.log("Inside handleEmailInput: ", event.target.value);
 
     setEmail(event.target.value);
   };
@@ -72,20 +72,18 @@ function Main() {
   const handleSubmit = (event) => {
     console.log("Inside Submit: ");
     event.preventDefault();
-    setSubmit();
+    const dataInputed = {
+      rating: rating,
+      activity: activity,
+      textInput: textInput,
+      nameInput: nameInput,
+      email: email
+    };
+    if (dataInputed) {
+      console.log("Send To Server: ", dataInputed);
+    }
   };
 
-  // const dataInputed = {
-  //   rating: rating,
-  //   activity: activity,
-  //   textInput: textInput,
-  //   nameInput: nameInput,
-  //   email: email,
-  //   submit: submit
-  // };
-  // if (rating || activity || textInput || nameInput || email || submit) {
-  //   console.log("Send to Server: ", dataInputed);
-  // }
   return (
     <main className="main">
       <section className={`main__list ${open ? "open" : ""}`}>
